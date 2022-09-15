@@ -1,1 +1,1 @@
-In most projects, we often give you only one main file to test with. For example, this main file is a test for a postitive_or_negative()
+This program converts a date to the day of year and determines how many days are left in the year, taking leap year into consideration.
