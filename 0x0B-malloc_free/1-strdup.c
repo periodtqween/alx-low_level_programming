@@ -1,39 +1,30 @@
-/**
- *  * *_strdup - program startup
- *   * @str: char being evaluated
- *   (*
- *    * Description: returns a pointer to a newly allocated space in memory
- *     * which contains a copy of the string given as a parameter)?
- *      * Return: return (0) is the required function signature
- *       */
+#include <stdlib.h>
+#include <stdio.h>
 
-#include "main.h"
+/**
+ *  * *_strdup - returns pointer to newly allocated space in memory
+ *   * with a copy of the string
+ *    *
+ *     * @str: string to have as a copy
+ *      * Return: pointer to duplicated string or NULL if insufficient memory
+ *       */
 char *_strdup(char *str)
 {
-		char *array;
-			unsigned int rand;
-				unsigned int strlen = 0;
+		char *s;
+			int i;
 
-					if (str == 0)
-							{
+				if (str == NULL)
+							return (NULL);
+					for (i = 0; *(str + i) != '\0'; i++)
+								;
+						s = malloc(i + 1);
+							if (s == 0 || s == NULL)
 										return (NULL);
-											}
-						while (str[strlen])
-								{
-											strlen++;
-												}
-							strlen++;
-
-								array = malloc(sizeof(char) * strlen);
-
-									if (array == 0)
-											{
-														return (NULL);
-															}
-										for (rand = 0; rand < strlen; rand++)
-												{
-															array[rand] = str[rand];
-																}
-											return (array);
+								for (i = 0; *(str + i) != '\0'; i++)
+										{
+													s[i] = *(str + i);
+														}
+									s[i] = *(str + i);
+										return (s);
 }
 

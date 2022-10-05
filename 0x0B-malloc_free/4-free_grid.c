@@ -1,21 +1,25 @@
-tartup
- * @grid: pointer being evaluated
- *  * @height: int being evaluated
- *  (*
-		 *   * Description: frees a two dimensional grid previously created
-		 *    * by the `alloc_grid` function)?
- *     * Return: return (0) is the required function signature
- *      */
+#include <stdlib.h>
+#include <stdio.h>
 
-#include "main.h"
- void free_grid(int **grid, int height)
+/**
+ *  * free_grid - frees a previously created 2d grid
+ *   *
+ *    * @grid: 2d grid to free
+ *     * @height: height of grid
+ *      * Return: void
+ *       */
+void free_grid(int **grid, int height)
 {
-		int x;
+		int i;
 
-			for (x = 0; x < height; x++)
+			if (grid != NULL && height != 0)
 					{
-								free(grid[x]);
-									}
-				free(grid);
+								for (i = 0; i < height; i++)
+											{
+															free(grid[i]);
+																	}
+										free(grid);
+											}
 }
+
 

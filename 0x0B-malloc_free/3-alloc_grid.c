@@ -1,52 +1,41 @@
-/**
- *  * **alloc_grid - program startup
- *   * @width: first int being evaluated
- *    * @height: second int  being evaluated
- *    (*
- *     * Description: returns a pointer to a two dimensional array of integers)?
- *      * Return: return (0) is the required function signature
- *       */
+#include <stdlib.h>
+#include <stdio.h>
 
-#include "main.h"
+/**
+ *  * **alloc_grid - returns pointer to a 2D array of integers
+ *   *
+ *    * @width: width of 2d array
+ *     * @height: height of 2d array
+ *      * Return: pointer to the array or NULL on failure
+ *       */
 int **alloc_grid(int width, int height)
 {
-		int **array;
-			int x;
-				int y;
+		int **a;
+			int i, k;
 
-					if (height <= 0 || width <= 0)
-							{
-										return (NULL);
-											}
 
-						array = malloc(sizeof(int *) * height);
-
-							if (array == NULL)
+				if (width <= 0 || height <= 0)
+							return (NULL);
+					a = malloc(sizeof(*a) * height);
+						if (a == 0)
+									return (NULL);
+							for (i = 0; i < height; i++)
 									{
-												return (NULL);
-													}
-								for (x = 0; x < height; x++)
-										{
-													array[x] = malloc(sizeof(int) * width);
-															if (array[x] == NULL)
-																		{
-																						free(array);
-																									for (y = 0; y <= x; y++)
-																													{
-																																		free(array[y]);
-																																					}
-																												return (NULL);
-																														}
-																}
-									for (x = 0; x < height; x++)
-											{
-														for (y = 0; y < width; y++)
+												a[i] = malloc(sizeof(int) * width);
+														if (a[i] == 0)
 																	{
-																					array[x][y] = 0;
-																							}
-															}
-										return (array);
+																					for (k = 0; k < i; k++)
+																									{
+																														free(a[k]);
+																																	}
+																								free(a);
+																											return (NULL);
+																													}
+																for (k = 0; k < width; k++)
+																			{
+																							a[i][k] = 0;
+																									}
+																	}
+								return (a);
 }
-
-
 

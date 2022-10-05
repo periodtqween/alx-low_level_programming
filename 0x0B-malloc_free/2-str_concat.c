@@ -1,47 +1,35 @@
-/**
- *  * *str_concat - program startup
- *   * @s1: first pointer being evaluated
- *    * @s2: second pointer being evaluated
- *    (*
- *     * Description: concatenates two strings)?
- *      * Return: return (0) is the required function signature
- *       */
+#include <stdlib.h>
+#include <stdio.h>
 
-#include "main.h"
+/**
+ *  * *str_concat - concatenates two strings
+ *   *
+ *    * @s1: first string
+ *     * @s2: second string
+ *      * Return: pointer to string or NULL if failure
+ *       */
 char *str_concat(char *s1, char *s2)
 {
-		char *array;
-			int string;
-				int length = 0;
-					int concat_string = 0;
+		char *c;
+			int i, k;
 
-						if (s1 == NULL)
-								{
-											s1 = "";
-												}
-							if (s2 == NULL)
-									{
-												s2 = "";
-													}
-								for (string = 0; s1[string] || s2[string]; string++)
-										{
-													length++;
-														}
-
-									array = malloc(sizeof(char) * length);
-
-										if (array == NULL)
-												{
-															return (NULL);
-																}
-											for (string = 0; s1[string]; string++)
-													{
-																array[concat_string++] = s1[string];
-																	}
-												for (string = 0; s2[string]; string++)
-														{
-																	array[concat_string++] = s2[string];
-																		}
-													return (array);
+				if (s1 == NULL)
+							s1 = "";
+					if (s2 == NULL)
+								s2 = "";
+						for (i = 0; *(s1 + i) != '\0'; i++)
+									;
+							for (k = 0; *(s2 + k) != '\0'; k++)
+										;
+								c = malloc(i + k + 1);
+									if (c == 0)
+												return (NULL);
+										for (i = 0; *(s1 + i) != '\0'; i++)
+													c[i] = *(s1 + i);
+											for (k = 0; *(s2 + k) != '\0'; k++)
+														c[i + k] = *(s2 + k);
+												c[i + k] = *(s2 + k);
+													return (c);
 }
+
 
